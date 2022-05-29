@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { deleteBucket } from "./redux/modules/bucket";
+import { updateBucket } from "./redux/modules/bucket";
 import { useHistory } from "react-router-dom"
 
 const Detail = (props) => {
@@ -15,11 +16,15 @@ const Detail = (props) => {
   // console.log(bucket_list)
     return (
       <>
-      <Title>{bucket_list[bucket_index]}</Title>
+      <Title>{bucket_list[bucket_index].text}</Title>
       <button onClick={()=>{
         dispatch(deleteBucket(bucket_index));
         history.goBack();
       }}>삭제하기</button>
+      <button onClick={()=>{
+        dispatch(updateBucket(bucket_index));
+        history.goBack();
+      }}>완료하기</button>
       </>
     )
 
